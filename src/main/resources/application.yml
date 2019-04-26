@@ -1,0 +1,60 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: lambda-service
+  datasource:
+    hikari:
+      idle-timeout: 200000
+      maximum-pool-size: 10
+      minimum-idle: 30
+      connection-timeout: 600000
+      connection-test-query: SELECT 1
+      pool-name: HikariPool
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://springboot-db.c2lighgovwg5.rds.cn-northwest-1.amazonaws.com.cn:3306/test_db?useSSL=false&useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false
+    username: root
+    password: root123456
+  redis:
+    host: 52.82.29.19
+    port: 6379
+    password:
+  session:
+    store-type: redis
+
+bsc:
+  aws:
+    region: cn-northwest-1
+    s3bucketName: s3/buckets/spring-boot-test
+
+
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+  notEmpty: false
+  identity: MYSQL
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:META-INF/mapper/**/*.xml
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#启用监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"  # 开放所有端点health，info，metrics，通过actuator/+端点名就可以获取相应的信息。默认打开health和info
+  endpoint:
+    health:
+      show-details: always  #未开启actuator/health时，我们获取到的信息是{"status":"UP"}，status的值还有可能是 DOWN。开启后打印详细信息
+
+
+
+
