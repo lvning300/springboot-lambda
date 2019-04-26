@@ -5,7 +5,7 @@ import com.demo.cloud.user.service.IUserService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +19,7 @@ public class UserServiceController {
     private final IUserService userService;
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
@@ -53,14 +53,14 @@ public class UserServiceController {
 
 
     @ApiOperation(value = "使用Mapper框架自动分页根据UserInfo分页查询用户信息", response = UserInfo.class)
-    @GetMapping(value = "/page-info", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/page-info", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public PageInfo<UserInfo> queryUserInfoByPageInfo(UserInfo userInfo) {
         List<UserInfo> userInfos = userService.queryUserInfoByPage(userInfo);
         return new PageInfo<>(userInfos);
     }
 
     @ApiOperation(value = "自定义SQL查询语句根据UserInfo分页查询用户信息", response = UserInfo.class)
-    @GetMapping(value = "/{pageNum}/{pageSize}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{pageNum}/{pageSize}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public PageInfo<UserInfo> queryUserInfoByPageInfo(UserInfo userInfo,
                                                       @PathVariable(value = "pageNum", name = "pageNum") Integer pageNum,
                                                       @PathVariable(value = "pageSize", name = "pageSize") Integer pageSize) {
@@ -70,12 +70,12 @@ public class UserServiceController {
 
 
     @GetMapping(value = "/redis", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getRedisValue() {
+    public Object getRedisValue() {
 
         redisTemplate.opsForValue().set("name", "tom");
         redisTemplate.opsForValue().set("age", "10");
         redisTemplate.opsForValue().set("address", "SZ");
-        return "";
+        return redisTemplate.opsForValue().get("name");
     }
 
 }
