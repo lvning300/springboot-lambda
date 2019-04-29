@@ -5,11 +5,20 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
 @Data
-@ConfigurationProperties("bsc.aws")
+@ConfigurationProperties("aws")
 public class AWSProperties {
 
     /**
-     * AWSf服务区域
+     * awsAccessKeyId
+     */
+    String awsAccessKeyId;
+    /**
+     * awsSecretKey
+     */
+    String awsSecretKey;
+
+    /**
+     * AWS服务区域
      */
     String region;
 
