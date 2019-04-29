@@ -60,4 +60,9 @@ public class UserServiceImpl implements IUserService {
         criteria.andEqualTo("user_name", userName);
         return userInfoDao.selectOneByExample(example);
     }
+
+    @Override
+    public Integer insertUserInfo(UserInfo userInfo) {
+        return userInfoDao.insert(userInfo);
+    }
 }

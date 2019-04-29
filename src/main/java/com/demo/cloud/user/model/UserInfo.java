@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Table;
 
 @Data
-@Table(name = "ibp_user")
+@Table(name = "dbo.ibp_user")
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)

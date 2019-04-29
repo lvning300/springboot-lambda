@@ -22,4 +22,12 @@
     </select>
 
 
+    <select id="selectAllUser" parameterType="com.demo.cloud.user.model.UserInfo"
+            resultType="com.demo.cloud.user.model.UserInfo">
+
+        select * from ibp_user us
+
+    </select>
+
+
 </mapper>

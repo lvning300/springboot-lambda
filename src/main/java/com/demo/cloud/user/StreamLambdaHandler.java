@@ -22,7 +22,7 @@ public class StreamLambdaHandler implements RequestStreamHandler {
     static {
         try {
             handler = SpringBootLambdaContainerHandler.getAwsProxyHandler(UserServiceApplication.class);
-            //handler.activateSpringProfiles("lambda");
+            handler.activateSpringProfiles("dev");
         } catch (ContainerInitializationException e) {
             // Re-throw the exception to force another cold start
             log.error(e.getMessage());

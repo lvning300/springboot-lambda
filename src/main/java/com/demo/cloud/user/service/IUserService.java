@@ -13,4 +13,6 @@ public interface IUserService {
     List<UserInfo> queryUserInfoByPageSize(UserInfo userInfo, Integer pageNum, Integer pageSize);
 
     UserInfo queryUserInfoByUserName(String userName);
+
+    Integer insertUserInfo(UserInfo userInfo);
 }

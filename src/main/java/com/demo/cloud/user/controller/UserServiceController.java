@@ -122,4 +122,12 @@ public class UserServiceController {
         return resultMap;
     }
 
+    @ApiOperation(value = "添加用户信息", response = UserInfo.class)
+    @RequestMapping(path = "/user-info", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Integer addUserInfo(@RequestBody UserInfo userInfo) {
+        log.info("### add user param:{}", JSONObject.toJSON(userInfo));
+        return userService.insertUserInfo(userInfo);
+
+    }
+
 }
