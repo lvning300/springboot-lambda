@@ -6,27 +6,46 @@ Globals:
   Api:
     # API Gateway regional endpoints
     EndpointConfiguration: REGIONAL
+  Function:
+    Timeout: 3
 
 Resources:
-  QXTestApiFunction:
+  MyApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: private-lv-test
+      StageName: test
+
+  #  MyQueue:
+  #    Type: AWS::SQS::QUEUE
+  #    Properties:
+  #      Name: dfw-warm-up
+
+  lv-testFunction:
     Type: AWS::Serverless::Function
     Properties:
+      FunctionName: lv-test
       Handler: com.demo.cloud.user.StreamLambdaHandler::handleRequest
       Runtime: java8
       CodeUri: target/springboot-lambda-0.0.1-SNAPSHOT.jar
-      MemorySize: 1512
+      MemorySize: 1536
       Policies: AWSLambdaBasicExecutionRole
+      #      AutoPublishAlias: v1
       Timeout: 600
       Events:
-        GetResource:
+        lv-testApi:
           Type: Api
           Properties:
             Path: /{proxy+}
             Method: any
 
 Outputs:
-  SpringBootTestUserApi:
-    Description: URL for application
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/user/'
-    Export:
-      Name: SpringBootTestUserApi
+  #  QXDfwApi:
+  #    Description: "API Gateway endpoint URL for Prod stage for QXDfw function"
+  #    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com.cn/Prod/dfw/warm-up/"
+  lv-testFunction:
+    Description: "QXDfw Lambda Function ARN"
+    Value: !GetAtt QXDfwFunction.Arn
+  lv-testFunctionIamRole:
+    Description: "Implicit IAM Role created for QXDfw function"
+    Value: !GetAtt QXDfwFunctionRole.Arn

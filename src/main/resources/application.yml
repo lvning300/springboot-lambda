@@ -12,12 +12,12 @@ spring:
       connection-test-query: SELECT 1
       pool-name: HikariPool
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://springboot-db.c2lighgovwg5.rds.cn-northwest-1.amazonaws.com.cn:3306/test_db?useSSL=false&useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false
-    username: root
-    password: root123456
+    url: jdbc:mysql://qopmysqldev.coaauuauri7z.rds.cn-north-1.amazonaws.com.cn:3306/QOP_Sell_Dev?useSSL=false&useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false
+    username: sa
+    password: QopDb4Dev
   redis:
     database: 0
-    host: 52.82.29.19
+    host: qop-redis-dev.0kvtx6.ng.0001.cnn1.cache.amazonaws.com.cn
     jedis:
       pool:
         #最大连接数据库连接数,设 0 为没有限制
