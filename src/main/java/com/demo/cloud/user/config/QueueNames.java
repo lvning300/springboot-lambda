@@ -11,8 +11,7 @@ import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-import static com.demo.cloud.user.constant.QueueConstant.QX_AWS_SQS_REQUEST_KEY;
-import static com.demo.cloud.user.constant.QueueConstant.QX_AWS_SQS_RESPONSE_KEY;
+import static com.demo.cloud.user.constant.QueueConstant.*;
 
 /**
  * 队列名称自动创建
@@ -32,5 +31,8 @@ public class QueueNames {
 
     @Value(QX_AWS_SQS_RESPONSE_KEY)
     String responseQueue;
+
+    @Value(QX_AWS_SQS_RESPONSE_TEST_KEY)
+    String requestQueueTest;
 
 }

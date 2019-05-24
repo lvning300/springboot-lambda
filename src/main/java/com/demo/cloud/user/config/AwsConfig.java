@@ -60,7 +60,7 @@ public class AwsConfig {
 
         sqsAsync.createQueue(queueNames.getRequestQueue());
         sqsAsync.createQueue(queueNames.getResponseQueue());
-
+        sqsAsync.createQueue(queueNames.getRequestQueueTest());
         return sqsAsync;
     }
 

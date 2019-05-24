@@ -47,6 +47,7 @@ aws:
     queues:
       request: ${qx_sqs_test_request}
       response: ${qx_sqs_test_response}
+      response-test: lvning-queue
 
 
 mapper:
