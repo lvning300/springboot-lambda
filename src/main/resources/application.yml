@@ -45,8 +45,8 @@ aws:
   s3bucketName: s3/buckets/spring-boot-test
   sqs:
     queues:
-      requestQueue: qx-test-request
-      responseQueue: qx-test-response
+      request: ${qx_sqs_test_request}
+      response: ${qx_sqs_test_response}
 
 
 mapper:
