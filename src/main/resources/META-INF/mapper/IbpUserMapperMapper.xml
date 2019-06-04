@@ -21,5 +21,150 @@
         </where>
     </select>
 
+    <insert id="batchInsert" parameterType="List">
+        insert into ibp_user (user_name, org_name, password,nick_name
+        , b1
+        , b2
+        , b3
+        , b4
+        , b5
+        , b6
+        , b7
+        , b8
+        , b9
+        , b10
+        , b11
+        , b12
+        , b13
+        , b14
+        , b15
+        , b16
+        , b17
+        , b18
+        , b19
+        , b20
+        , b21
+        , b22
+        , b23
+        , b24
+        , b25
+        , b26
+        , b27
+        , b28
+        , b29
+        , b30
+        ) values
+        <foreach collection="list" item="ibpUser" index="index" separator=",">
+            (
+              #{ibpUser.userName}
+            , #{ibpUser.orgName}
+            , #{ibpUser.password}
+            , #{ibpUser.nickName}
+            , #{ibpUser.b1}
+            , #{ibpUser.b2}
+            , #{ibpUser.b3}
+            , #{ibpUser.b4}
+            , #{ibpUser.b5}
+            , #{ibpUser.b6}
+            , #{ibpUser.b7}
+            , #{ibpUser.b8}
+            , #{ibpUser.b9}
+            , #{ibpUser.b10}
+            , #{ibpUser.b11}
+            , #{ibpUser.b12}
+            , #{ibpUser.b13}
+            , #{ibpUser.b14}
+            , #{ibpUser.b15}
+            , #{ibpUser.b16}
+            , #{ibpUser.b17}
+            , #{ibpUser.b18}
+            , #{ibpUser.b19}
+            , #{ibpUser.b20}
+            , #{ibpUser.b21}
+            , #{ibpUser.b22}
+            , #{ibpUser.b23}
+            , #{ibpUser.b24}
+            , #{ibpUser.b25}
+            , #{ibpUser.b26}
+            , #{ibpUser.b27}
+            , #{ibpUser.b28}
+            , #{ibpUser.b29}
+            , #{ibpUser.b30}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="batchInsertFor" parameterType="List">
+        insert into ibp_user (user_name, org_name, password,nick_name
+        , b1
+        , b2
+        , b3
+        , b4
+        , b5
+        , b6
+        , b7
+        , b8
+        , b9
+        , b10
+        , b11
+        , b12
+        , b13
+        , b14
+        , b15
+        , b16
+        , b17
+        , b18
+        , b19
+        , b20
+        , b21
+        , b22
+        , b23
+        , b24
+        , b25
+        , b26
+        , b27
+        , b28
+        , b29
+        , b30
+        ) values
+        <foreach collection="list" item="ibpUser" index="index" separator=",">
+            (
+            #{ibpUser.userName}
+            , #{ibpUser.orgName}
+            , #{ibpUser.password}
+            , #{ibpUser.nickName}
+            , #{ibpUser.b1}
+            , #{ibpUser.b2}
+            , #{ibpUser.b3}
+            , #{ibpUser.b4}
+            , #{ibpUser.b5}
+            , #{ibpUser.b6}
+            , #{ibpUser.b7}
+            , #{ibpUser.b8}
+            , #{ibpUser.b9}
+            , #{ibpUser.b10}
+            , #{ibpUser.b11}
+            , #{ibpUser.b12}
+            , #{ibpUser.b13}
+            , #{ibpUser.b14}
+            , #{ibpUser.b15}
+            , #{ibpUser.b16}
+            , #{ibpUser.b17}
+            , #{ibpUser.b18}
+            , #{ibpUser.b19}
+            , #{ibpUser.b20}
+            , #{ibpUser.b21}
+            , #{ibpUser.b22}
+            , #{ibpUser.b23}
+            , #{ibpUser.b24}
+            , #{ibpUser.b25}
+            , #{ibpUser.b26}
+            , #{ibpUser.b27}
+            , #{ibpUser.b28}
+            , #{ibpUser.b29}
+            , #{ibpUser.b30}
+            )
+        </foreach>
+    </insert>
 
 </mapper>

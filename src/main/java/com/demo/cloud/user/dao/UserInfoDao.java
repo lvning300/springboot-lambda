@@ -13,5 +13,9 @@ public interface UserInfoDao extends Mapper<UserInfo>, MySqlMapper<UserInfo> {
                                        @Param("pageNum") int pageNum,
                                        @Param("pageSize") int pageSize);
 
+    Integer batchInsert(List<UserInfo> userInfos);
+
+    Integer batchInsertFor(List<UserInfo> userInfos);
+
 
 }

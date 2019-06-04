@@ -16,9 +16,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Slf4j
@@ -120,6 +118,71 @@ public class UserServiceController {
                         .build());
 
         return resultMap;
+    }
+
+    @ApiOperation(value = "添加用户信息", response = Integer.class)
+    @RequestMapping(path = "/batch/{recorder}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Integer addUserInfoBatch(@PathVariable(value = "recorder",name ="recorder")
+                                    Integer recorder) {
+
+
+
+        List<UserInfo> userInfos = new ArrayList<>();
+        for (int i = 0; i < recorder; i++) {
+            userInfos.add(UserInfo.builder()
+                    .nickName(randomChar()+i)
+                    .orgName(randomChar()+i)
+                    .userName(randomChar()+i)
+                    .password(randomChar()+i)
+                    .b1(randomChar())
+                    .b2(randomChar())
+                    .b3(randomChar())
+                    .b4(randomChar())
+                    .b5(randomChar())
+                    .b6(randomChar())
+                    .b7(randomChar())
+                    .b8(randomChar())
+                    .b9(randomChar())
+                    .b10(randomChar())
+                    .b11(randomChar())
+                    .b12(randomChar())
+                    .b13(randomChar())
+                    .b14(randomChar())
+                    .b15(randomChar())
+                    .b16(randomChar())
+                    .b17(randomChar())
+                    .b18(randomChar())
+                    .b19(randomChar())
+                    .b20(randomChar())
+                    .b21(randomChar())
+                    .b22(randomChar())
+                    .b23(randomChar())
+                    .b24(randomChar())
+                    .b25(randomChar())
+                    .b26(randomChar())
+                    .b27(randomChar())
+                    .b28(randomChar())
+                    .b29(randomChar())
+                    .b30(randomChar())
+                    .build());
+        }
+        return userService.insertBatchUserInfo(userInfos);
+
+    }
+
+    public static String randomChar() {
+
+
+
+        char[] aZ = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        Random random = new Random();
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            builder.append(aZ[random.nextInt(32)]);
+        }
+        return builder.toString();
+
     }
 
 }
