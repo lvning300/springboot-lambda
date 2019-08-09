@@ -39,8 +39,8 @@ spring:
     port: 6379
 
 aws:
-  awsAccessKeyId: AKIAUKTTXEQSC2TFOXCT
-  awsSecretKey: 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
+  awsAccessKeyId: xxx
+  awsSecretKey: xx
   region: cn-northwest-1
   s3bucketName: s3/buckets/spring-boot-test
   sqs:
